@@ -1,1 +1,63 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>My Vinyl Collection</title><link rel="stylesheet" href="/styles.css"></head><body><header><div><small>PERSONAL ARCHIVE</small><h1>My Vinyl</h1><p id="summary">Loading…</p></div><button id="add">＋ Add record</button></header><section class="tools"><input id="search" placeholder="Search artist, album, genre, notes…"><div id="genres"></div></section><div class="meta"><span id="count"></span><select id="sort"><option value="artist">Artist A–Z</option><option value="album">Album A–Z</option><option value="new">Year: newest</option><option value="old">Year: oldest</option></select></div><main id="grid"></main><div id="modal" class="modal"><form id="form"><div class="head"><h2 id="title">Add record</h2><button type="button" id="close">×</button></div><input type="hidden" id="id"><label>Artist</label><input id="artist" required><label>Album</label><input id="album" required><label>Year</label><input id="year" type="number" min="1000" max="2100"><label>Genre</label><input id="genre"><label>Notes</label><textarea id="notes"></textarea><div class="actions"><button type="button" id="del">Delete</button><button class="save">Save</button></div></form></div><script src="/app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Vinyl Collection</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div>
+      <div class="eyebrow">PERSONAL ARCHIVE</div>
+      <h1>My Vinyl</h1>
+      <p id="summary">Loading collection…</p>
+    </div>
+    <button id="add" class="primary">＋ Add record</button>
+  </div>
+</header>
+
+<section class="tools">
+  <div class="tools-inner">
+    <input id="search" aria-label="Search collection" placeholder="Search artist, album, genre, notes…" autocomplete="off">
+    <div id="genres" class="chips" aria-label="Genre filters"></div>
+  </div>
+</section>
+
+<div class="meta">
+  <span id="count">Loading…</span>
+  <label class="sort-label">Sort
+    <select id="sort" aria-label="Sort collection">
+      <option value="artist">Artist A–Z</option>
+      <option value="album">Album A–Z</option>
+      <option value="new">Year: newest</option>
+      <option value="old">Year: oldest</option>
+    </select>
+  </label>
+</div>
+
+<main class="table-wrap">
+  <table class="collection-table">
+    <thead>
+      <tr><th>Artist</th><th>Album</th><th>Year</th><th>Genre</th><th>Notes</th></tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+</main>
+
+<div id="modal" class="modal" aria-hidden="true">
+  <form id="form" class="sheet">
+    <div class="head"><h2 id="title">Add record</h2><button type="button" id="close" class="close">×</button></div>
+    <input type="hidden" id="id">
+    <label>Artist</label><input id="artist" required>
+    <label>Album</label><input id="album" required>
+    <label>Year</label><input id="year" type="number" min="1000" max="2100">
+    <label>Genre</label><input id="genre">
+    <label>Notes</label><textarea id="notes"></textarea>
+    <div class="actions"><button type="button" id="del" class="delete">Delete</button><button class="save">Save record</button></div>
+  </form>
+</div>
+<script src="/app.js"></script>
+</body>
+</html>
