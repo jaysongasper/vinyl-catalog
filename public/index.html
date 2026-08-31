@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>My Vinyl Collection</title>
+<title>Jayson’s Vinyl Collection</title>
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -11,7 +11,7 @@
   <div class="header-inner">
     <div>
       <div class="eyebrow">PERSONAL ARCHIVE</div>
-      <h1>My Vinyl</h1>
+      <h1>Jayson’s Vinyl Collection</h1>
       <p id="summary">Loading collection…</p>
     </div>
     <button id="add" class="primary">＋ Add record</button>
@@ -21,7 +21,10 @@
 <section class="tools">
   <div class="tools-inner">
     <input id="search" aria-label="Search collection" placeholder="Search artist, album, genre, notes…" autocomplete="off">
-    <div id="genres" class="chips" aria-label="Genre filters"></div>
+    <div class="genre-controls">
+  <div id="genres" class="chips" aria-label="Genre filters"></div>
+  <button type="button" id="genreToggle" class="genre-toggle" aria-label="Expand genre filters" aria-expanded="false">+</button>
+</div>
   </div>
 </section>
 
