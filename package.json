@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "resolve": "RUN_DISCOGS_RESOLVER=true node resolve-discogs.js"
+    "resolve": "RUN_DISCOGS_RESOLVER=true node resolve-discogs.js",
+    "test": "node --test"
   },
   "dependencies": {
     "express": "^5.1.0",
