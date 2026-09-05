@@ -1,1 +1,13 @@
-{"name":"vinyl-collection","version":"1.0.0","private":true,"scripts":{"prestart":"node resolve-discogs.js","start":"node server.js"},"dependencies":{"express":"^5.1.0","pg":"^8.16.3"}}
+{
+  "name": "vinyl-collection",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "resolve": "RUN_DISCOGS_RESOLVER=true node resolve-discogs.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "pg": "^8.16.3"
+  }
+}
