@@ -1,7 +1,9 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 process.env.DATABASE_URL='postgres://localhost/test';
-const{norm,artistNorm,scoreArtworkCandidate}=require('../server');
+const{norm,artistNorm,scoreArtworkCandidate,coverUrl,validSourceType}=require('../server');
 test('normalization supports conservative matching',()=>{assert.equal(norm('Björk — Post'),'bjork post');assert.equal(artistNorm('The Beatles'),'beatles')});
 test('exact artist title and year is a confident artwork match',()=>{const score=scoreArtworkCandidate({artist:'The Beatles',album:'Abbey Road',year:1969},{title:'Abbey Road','first-release-date':'1969-09-26','artist-credit':[{name:'The Beatles'}]});assert.equal(score,140)});
 test('wrong artist and title are not automatically selected',()=>{const score=scoreArtworkCandidate({artist:'Miles Davis',album:'Kind of Blue',year:1959},{title:'Blue','first-release-date':'2004','artist-credit':[{name:'Joni Mitchell'}]});assert.ok(score<115)});
 test('startup script does not run artwork or legacy metadata backfills',()=>{const pkg=require('../package.json');assert.equal(pkg.scripts.start,'node server.js');assert.ok(!pkg.scripts.start.includes('resolve'));assert.ok(!pkg.scripts.start.includes('artwork'))});
+test('selected MusicBrainz source type resolves the exact Cover Art Archive resource',()=>{const id='9c928ed2-bcf1-457a-a8c5-db02db96a353';assert.equal(coverUrl(id,'release-group'),`https://coverartarchive.org/release-group/${id}/front-250`);assert.equal(coverUrl(id,'release'),`https://coverartarchive.org/release/${id}/front-250`);assert.equal(validSourceType('release-group'),true);assert.equal(validSourceType('release'),true);assert.equal(validSourceType('recording'),false)});
+test('candidate commit waits for persistence instead of returning a queued response',()=>{const source=require('node:fs').readFileSync(require.resolve('../server'),'utf8');assert.match(source,/const result=await enqueueSelected\(/);assert.match(source,/if\(result\.status!==['"]ready['"]\)/);assert.doesNotMatch(source,/enqueue\(req\.params\.id,id\);res\.status\(202\)/)});
