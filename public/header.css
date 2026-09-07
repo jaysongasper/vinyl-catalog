@@ -1,0 +1,13 @@
+.site-logo{display:block;width:280px;height:auto;margin:0}
+.header-inner{align-items:center}
+.header-side{display:flex;flex-direction:column;align-items:flex-end;gap:10px;margin-left:auto}
+.header-side #summary{text-align:right;white-space:nowrap}
+@media(max-width:680px){
+  .header-inner{padding:14px 12px;align-items:flex-start;gap:12px}
+  .brand-block{flex:0 0 140px}
+  .site-logo{width:140px;max-width:140px}
+  .header-side{flex:1;min-width:0;gap:8px;align-items:flex-end}
+  .header-actions{align-items:flex-end}
+  .header-actions button{width:auto;min-height:30px;border-radius:7px;padding:6px 10px;font-size:11px;line-height:1.15}
+  .header-side #summary{font-size:11px;line-height:1.25;text-align:right;white-space:normal}
+}
